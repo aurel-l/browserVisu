@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="css/reveal.css">
   <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
+  <link rel="stylesheet" href="css/style.css">
+
   <!-- Code syntax highlighting -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -43,6 +45,13 @@
       <section>
         <h1>Data visualisation in the browser</h1>
         <p>on using <a href="http://d3js.org/" target="_blank">D3.js</a> and other libraries to interactively visualise data</p>
+      </section>
+
+      <section>
+        <h1>Editor</h1>
+        <div class='editor'>
+let a = 1;
+        </div>
       </section>
 
       <section>
@@ -379,31 +388,11 @@ console.log( '"customevent" has fired' );
   <script src="lib/js/head.min.js"></script>
   <script src="js/reveal.js"></script>
 
-  <script>
+  <script src="lib/js/browser.min.js"></script>
+  <script src="lib/js/ace.js"></script>
+  <script src="lib/js/d3.min.js"></script>
 
-    // Full list of configuration options available at:
-    // https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      center: true,
-
-      transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-      // Optional reveal.js plugins
-      dependencies: [
-        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-        { src: 'lib/js/d3.min.js', async: true },
-        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-        { src: 'plugin/zoom-js/zoom.js', async: true },
-        { src: 'plugin/notes/notes.js', async: true }
-      ]
-    });
-
-  </script>
+  <script src="js/script.js"></script></script>
 
 </body>
 </html>
