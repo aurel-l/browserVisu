@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "strict": 0,
+    "quotes": [1, "single"],
+    "no-console": 0,
+    "key-spacing": [1, {"align": "value"}]
+  },
+  "globals": {
+    "Reveal": false,
+    "babel": false,
+    "d3": false
+  }
+}
