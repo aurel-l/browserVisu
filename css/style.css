@@ -10,6 +10,10 @@
   will-change: transform;
 }
 
-#key.hidden {
+#key.away {
   transform: translate(-100px, 100px);
+}
+
+.reveal table td {
+  text-align: center;
 }

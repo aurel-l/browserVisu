@@ -20,12 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     // Optional reveal.js plugins
     dependencies: [
-      {src: 'plugin/zoom-js/zoom.js', async: true },
-      // {src: 'plugin/notes/notes.js', async: true },
-      // {src: 'plugin/remotes/remotes.js', async: true},
+      {src: 'plugin/zoom-js/zoom.js', async: true},
+      {src: 'plugin/notes/notes.js', async: true},
       {src: '//cdn.socket.io/socket.io-1.3.5.js'},
-      {src: 'plugin/multiplex/master.js', async: true },
-      {src: 'plugin/multiplex/client.js', async: true }
+      {src: 'plugin/multiplex/master.js', async: true},
+      {src: 'plugin/multiplex/client.js', async: true}
     ]
   });
 
@@ -55,23 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
   // }
 
   var keyButtonDisplay = (function() {
+    // "master key" button on the first page
     var keyDom = document.getElementById('key');
     keyDom.addEventListener('click', function() {
-      localStorage.setItem(
-        'secret',
-        /* eslint-disable */
-        prompt('new secret master key for this presentation on this browser')
-        /* eslint-enable */
+      /* eslint-disable */
+      var newKey = prompt(
+        'new secret master key for this presentation on this browser'
       );
-      location.reload();
+      /* eslint-enable */
+      if (newKey) {
+        // keep for future visits
+        localStorage.setItem('secret', newKey);
+        location.reload();
+      }
     });
-    return function(currentSlide, previousSlide) {
-      if (currentSlide.parentElement.firstElementChild === currentSlide) {
+    return function(curr, prev) {
+      if (curr.parentElement.firstElementChild === curr) {
         keyDom.classList.remove('hidden');
-      } else if (
-        previousSlide &&
-        previousSlide.parentElement.firstElementChild === previousSlide
-      ) {
+      } else if (prev && prev.parentElement.firstElementChild === prev) {
         keyDom.classList.add('hidden');
       }
     };
