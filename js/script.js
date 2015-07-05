@@ -13,13 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     transition: 'slide', // none/fade/slide/convex/concave/zoom
 
+    multiplex: {
+      secret: localStorage.getItem('secret'),
+      id:     'b05c4f76d2665ffc',
+      url:    'revealjs.jit.su:80'
+    },
     // Optional reveal.js plugins
     dependencies: [
       {src: 'plugin/zoom-js/zoom.js', async: true },
-      {src: 'plugin/notes/notes.js', async: true },
-      {src: 'plugin/remotes/remotes.js', async: true}
+      // {src: 'plugin/notes/notes.js', async: true },
+      // {src: 'plugin/remotes/remotes.js', async: true},
+      {src: '//cdn.socket.io/socket.io-1.3.5.js'},
+      {src: 'plugin/multiplex/master.js', async: true },
+      {src: 'plugin/multiplex/client.js', async: true }
     ]
   });
+
+
 
   // function evalCode(text) {
   //   babel.run(text);
@@ -43,13 +53,40 @@ document.addEventListener('DOMContentLoaded', function() {
   //   }
   //   //window.d3ctx = null;
   // }
-  //
-  // Reveal.addEventListener('slidechanged', function(e) {
-  //   if (e.previousSlide) {
-  //     cleanup(e.previousSlide);
-  //   }
-  //   if (e.currentSlide) {
-  //     setup(e.currentSlide);
-  //   }
-  // });
+
+  var keyButtonDisplay = (function() {
+    var keyDom = document.getElementById('key');
+    keyDom.addEventListener('click', function() {
+      localStorage.setItem(
+        'secret',
+        /* eslint-disable */
+        prompt('new secret master key for this presentation on this browser')
+        /* eslint-enable */
+      );
+      location.reload();
+    });
+    return function(currentSlide, previousSlide) {
+      if (currentSlide.parentElement.firstElementChild === currentSlide) {
+        keyDom.classList.remove('hidden');
+      } else if (
+        previousSlide &&
+        previousSlide.parentElement.firstElementChild === previousSlide
+      ) {
+        keyDom.classList.add('hidden');
+      }
+    };
+  })();
+
+  Reveal.addEventListener('slidechanged', function(e) {
+    keyButtonDisplay(e.currentSlide, e.previousSlide);
+    // if (e.previousSlide) {
+    //   cleanup(e.previousSlide);
+    // }
+    // if (e.currentSlide) {
+    //   setup(e.currentSlide);
+    // }
+  });
+  Reveal.addEventListener('ready', function(e) {
+    keyButtonDisplay(e.currentSlide);
+  });
 });
