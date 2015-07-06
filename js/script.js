@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  var localStorageKey = (location.hostname + location.pathname + '-secret').toLowerCase();
   // Full list of configuration options available at:
   // https://github.com/hakimel/reveal.js#configuration
   Reveal.initialize({
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     transition: 'slide', // none/fade/slide/convex/concave/zoom
 
     multiplex: {
-      secret: localStorage.getItem('secret'),
+      secret: localStorage.getItem(localStorageKey),
       id:     'b05c4f76d2665ffc',
       url:    'revealjs.jit.su:80'
     },
@@ -58,21 +59,21 @@ document.addEventListener('DOMContentLoaded', function() {
     var keyDom = document.getElementById('key');
     keyDom.addEventListener('click', function() {
       /* eslint-disable */
-      var newKey = prompt(
-        'new secret master key for this presentation on this browser'
+      var secretKey = prompt(
+        'new secret master key for presentations on this domain with this browser'
       );
       /* eslint-enable */
-      if (newKey) {
+      if (secretKey) {
         // keep for future visits
-        localStorage.setItem('secret', newKey);
+        localStorage.setItem(localStorageKey, secretKey);
         location.reload();
       }
     });
     return function(curr, prev) {
       if (curr.parentElement.firstElementChild === curr) {
-        keyDom.classList.remove('hidden');
+        keyDom.classList.remove('away');
       } else if (prev && prev.parentElement.firstElementChild === prev) {
-        keyDom.classList.add('hidden');
+        keyDom.classList.add('away');
       }
     };
   })();
