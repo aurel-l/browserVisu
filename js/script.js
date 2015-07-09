@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     // Optional reveal.js plugins
     dependencies: [
+      {src: 'plugin/highlight/highlight.js', async: true, callback: function() {hljs.initHighlightingOnLoad();}},
       {src: 'plugin/zoom-js/zoom.js', async: true},
       {src: 'plugin/notes/notes.js', async: true},
       {src: '//cdn.socket.io/socket.io-1.3.5.js'},

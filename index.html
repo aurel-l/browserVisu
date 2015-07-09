@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Code syntax highlighting -->
-  <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
   <!-- Printing and PDF exports -->
   <script>
@@ -61,6 +61,9 @@
         <h2>Drawbacks</h2>
         <ul>
           <li class="fragment">No control on the browser/screen used</li>
+          <li class="fragment">Different implementations, not the same support</li>
+          <li class="fragment">Specific browser context (event loop, async, etc.)</li>
+          <li class="fragment">Not easy to do advanced visualisation</li>
         </ul>
 
         <aside class="notes"></aside>
@@ -80,42 +83,42 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr class="fragment">
               <td>overall code simplicity</td>
               <td>~</td>
               <td>++</td>
               <td>+</td>
               <td>-</td>
             </tr>
-            <tr>
+            <tr class="fragment">
               <td>animation</td>
               <td>+</td>
               <td>-</td>
               <td>+++</td>
               <td>++</td>
             </tr>
-            <tr>
+            <tr class="fragment">
               <td>for simple scenes</td>
               <td>+</td>
               <td>+</td>
               <td>+</td>
               <td>+</td>
             </tr>
-            <tr>
+            <tr class="fragment">
               <td>for complex scenes</td>
               <td>--</td>
               <td>-</td>
               <td>+</td>
               <td>+++</td>
             </tr>
-            <tr>
+            <tr class="fragment">
               <td>interactivity/events</td>
               <td>+++</td>
               <td>-</td>
               <td>+++</td>
               <td>-</td>
             </tr>
-            <tr>
+            <tr class="fragment">
               <td>browser support</td>
               <td>~</td>
               <td>++</td>
@@ -147,16 +150,137 @@
       </section>
 
       <section>
-        <h1>Examples</h1>
+        <h2><a target="_blank" href="https://biojs.net/">BioJS</a></h2>
+        <h3>Represent biological data on the web</h3>
+        <ul>
+          <li class="fragment">Set of visualisation tools for biological data</li>
+          <li class="fragment">Made by biologists, for biologists</li>
+          <li class="fragment">Repository of modules and components</li>
+          <li class="fragment">Quite recents, few contributors, but active</li>
+          <li class="fragment">Using recent/future features of the web</li>
+        <ul>
+        <div class="fragment">
+          <p>Potential use of a multiple sequence alignment element</p>
+          <pre><code data-trim>
+&lt;biojs-msa&gt;
+  &lt;biojs-io-fasta url="./Q7T2N8.fasta" /&gt;
+&lt;/biojs-msa&gt;
+          </code></pre>
+        </div>
       </section>
 
       <section>
-        <a href='//www.nytimes.com/interactive/2012/08/11/sunday-review/drought-history.html'>Drought and Deluge in the Lower 48</a>
+        <h1>Live examples</h1>
+      </section>
+
+      <section>
+        <h3><a href='http://workmen.biojs.net/demo/msa/fer1'>Multiple sequences viewer</a> (BioJS)</h3>
+        <iframe data-src='http://workmen.biojs.net/demo/msa/fer1'
+                height='400' scrolling='yes'
+                frameborder='no' allowtransparency='true'
+                allowfullscreen='true' style='width: 100%; background: white;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='http://workmen.biojs.net/demo/angularplasmid/first'>Plasmid visualisation</a> (BioJS)</h3>
+        <iframe data-src='http://workmen.biojs.net/demo/angularplasmid/first'
+                height='500' scrolling='yes'
+                frameborder='no' allowtransparency='true'
+                allowfullscreen='true' style='width: 65%;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='//www.nytimes.com/interactive/2012/08/11/sunday-review/drought-history.html'>Drought and Deluge in the Lower 48</a> (D3)</h3>
         <iframe data-src='//www.nytimes.com/interactive/2012/08/11/sunday-review/drought-history.html'
                 height='650' scrolling='yes'
                 frameborder='no' allowtransparency='true'
                 allowfullscreen='true' style='width: 100%;'>
         </iframe>
+      </section>
+
+      <section>
+        <h3><a href='//www.biostat.wisc.edu/~kbroman/D3/manyboxplots/'>~500 gene expression microarray values, sorted by median value</a> (D3)</h3>
+        <iframe data-src='//www.biostat.wisc.edu/~kbroman/D3/manyboxplots/'
+                height='550' scrolling='yes'
+                frameborder='no' allowtransparency='false'
+                allowfullscreen='true' style='width: 100%; background: white;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='//www.biostat.wisc.edu/~kbroman/D3/lod_and_effect/'>LOD curve plot from QTL analysis</a> (D3)</h3>
+        <iframe data-src='//www.biostat.wisc.edu/~kbroman/D3/lod_and_effect/'
+                height='600' scrolling='yes'
+                frameborder='no' allowtransparency='false'
+                allowfullscreen='true' style='width: 100%; background: white;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='http://bl.ocks.org/mbostock/4061502'>Boxplot</a> (D3)</h3>
+        <iframe data-src='http://bl.ocks.org/mbostock/raw/4061502/'
+                height='550' scrolling='yes'
+                frameborder='no' allowtransparency='false'
+                allowfullscreen='true' style='width: 80%; background: white;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='http://bl.ocks.org/mbostock/3884955'>Line charts</a> (D3)</h3>
+        <iframe data-src='http://bl.ocks.org/mbostock/raw/3884955/'
+                height='550' scrolling='yes'
+                frameborder='no' allowtransparency='false'
+                allowfullscreen='true' style='width: 100%; background: white;'>
+        </iframe>
+      </section>
+
+      <section>
+        <h3><a href='//data-arts.appspot.com/globe/'>World population</a> (Three.js)</h3>
+        <iframe data-src='//data-arts.appspot.com/globe/'
+                height='650' scrolling='yes'
+                frameborder='no' allowtransparency='false'
+                allowfullscreen='true' style='width: 100%;'>
+        </iframe>
+      </section>
+
+      <section>
+        <iframe data-src='//codepen.io/aurel-l/embed/KpQLod/?height=721&theme-id=1&default-tab=js'
+                height='650' scrolling='yes'
+                frameborder='no' allowtransparency='true'
+                allowfullscreen='true' style='width: 90%;'>
+        </iframe>
+      </section>
+
+      <section>
+        <p>Example of JSON-formatted values</p>
+        <pre><code>
+{
+  "nodes": [
+    {
+      "label": "Alor",
+      "ancestry": 0,
+      "x": 32.49,
+      "y": 2.9
+    }, {
+      "label": "Aru",
+      "ancestry": 0,
+      "x": 42.29,
+      "y": 5.08
+    }, "links": [
+    {
+      "source": "Flor1",
+      "target": "Alor",
+      "distance": 473.2
+    }, {
+      "source": "Flor2",
+      "target": "Alor",
+      "distance": 282.2
+    }
+  ]
+}
+        </code></pre>
       </section>
 
       <section>
