@@ -6,3 +6,5 @@ Basic presentation of some tools to do scientific data visualisation in the brow
 
 Uses [Reveal.js](https://github.com/hakimel/reveal.js).
 
+See here: [aurel-l.github.io/browserVisu/](https://aurel-l.github.io/browserVisu/#/)
+
